@@ -22,6 +22,7 @@ import {
   Divider,
   Flex,
 } from "@chakra-ui/react";
+import Hero from "../components/Hero";
 import { FaSun, FaMoon, FaMercury, FaVenus, FaStar, FaInfinity, FaHandSparkles } from "react-icons/fa";
 import { ArrowForwardIcon, DeleteIcon, EditIcon, InfoIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
@@ -31,9 +32,11 @@ import img9 from "../images/img9.png"
 import img8 from "../images/img8.png"
 import lotus1 from "../images/lotus1.png"
 import hero1 from "../images/hero1.jpg"
-import { useCartStore } from "../store/cart"; 
+import { useCartStore } from "../store/cart";
 import articles from "../store/articles";
 import { motion } from "framer-motion";
+import Text1 from "../components1/Text1";
+import PackageSelector from "../components1/PackageSelector";
 const MotionBox = motion(Box);
 
 
@@ -90,32 +93,33 @@ const HomePage = () => {
 
   ];
 
-  
+
 
   return (
     <Box bgColor={"#F8F9FA"}>
-      <Box mt={19}>
+      <Box mt={55}>
+        {/* Hero Section */}
+        <Hero />
         <Box
           as="section"
           position="relative"
-          bgGradient="linear(to-r,rgb(250, 240, 199), white)"
           py={{ base: 10, md: 20, lg: 24 }}
           px={{ base: 6, md: 10, lg: 16 }}
           display="flex"
           justifyContent="center"
         >
           <Stack
-            direction={{ base: "column-reverse", lg: "row" }}
+            direction={{ base: "row", lg: "row" }}
             alignItems="center"
-            spacing={{ base: 8, lg: 16 }}
+            spacing={{ base: 1, lg: 16 }}
             maxW="1200px"
             w="full"
           >
 
-         
-       
+
+
             {/* Text Section */}
-            <MotionBox flex={1} textAlign={{ base: "center", lg: "left" }} initial={{ opacity: 0, y: -80 }} animate={{ opacity: 1, y: 0 }}  transition={{ duration: 0.8 }}
+            <MotionBox flex={1} textAlign={{ base: "center", lg: "left" }} initial={{ opacity: 0, y: -80 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
             >
               <Heading
                 fontSize={{ base: "2xl", md: "4xl", lg: "5xl" }}
@@ -126,7 +130,7 @@ const HomePage = () => {
               </Heading>
               <Text
                 fontSize={{ base: "sm", md: "lg" }}
-                color="orange.700"
+                color={"#4A4A4A"}
                 mt={4}
               >
                 Expert Vedic Astrology & Life Coaching to Guide Your Journey
@@ -138,30 +142,17 @@ const HomePage = () => {
                 justify={{ base: "center", lg: "flex-start" }}
               >
                 <Link to={'/book'}>
-                <Button bg="orange.600" color="white" _hover={{ bg: "orange.700" }} w={'full'}>
-                  Book Consultation
-                </Button>
-                </Link>
-
-                <Link to={'/about'}>
-                <Button
-                  variant="outline"
-                  borderColor="orange.600"
-                  color="orange.600"
-                  _hover={{ bg: "orange.600", color: "white" }}
-                  w={'full'}
-                >
-                  Learn More
-                </Button>
+                  <Button bg="orange.600" color="white" _hover={{ bg: "orange.700" }} w={'full'}>
+                    Book Consultation
+                  </Button>
                 </Link>
 
               </Stack>
             </MotionBox>
 
             {/* Image Section */}
-            <MotionBox flex={1} display="flex" justifyContent="center" initial={{ opacity: 0, y: 80 }} animate={{ opacity: 1, y: 0 }}  transition={{ duration: 0.8 }} >
+            <MotionBox flex={1} display="flex" justifyContent="center" initial={{ opacity: 0, y: 80 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} >
               <Box
-                w={{ base: "80%", md: "60%", lg: "500px" }}
                 aspectRatio={1} // Ensures circular aspect ratio
                 borderRadius="full"
                 overflow="hidden"
@@ -179,42 +170,10 @@ const HomePage = () => {
             </MotionBox>
           </Stack>
         </Box>
-
-
-
-        <MotionBox bgGradient="linear(to-l,rgb(250, 240, 199), white)" color="#8B5E3C" p={{ base: 4, lg: 10 }} initial={{ opacity: 0, x: -80 }} animate={{ opacity: 1, x: 0 }}  transition={{ duration: 0.8 }}>
-          {/* First Section */}
-          <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={10} >
-            <VStack align="start" spacing={4}>
-              <Heading fontSize={{ base: "2xl", lg: "4xl" }}>The Cosmic Path: A Journey Through Astrology</Heading>
-              <Text fontSize={{ base: "md", lg: "lg" }}>
-                Astrology is an ancient practice that connects celestial movements with human experiences. By understanding planetary influences, we gain insights into our personalities, relationships, and life paths.
-              </Text>
-            </VStack>
-            <VStack align="start" spacing={4}>
-              <Heading fontSize={{ base: "md", lg: "lg" }} fontWeight="medium">OUR VISION</Heading>
-              <Text fontSize={{ base: "md", lg: "lg" }}>
-                Our mission is to guide individuals on a transformative journey of self-discovery through astrology, helping them align with the cosmic flow and live with purpose.
-              </Text>
-            </VStack>
-          </SimpleGrid>
-
-          {/* Second Section */}
-          <MotionBox mt={20} initial={{ opacity: 0, x: 80 }} animate={{ opacity: 1, x: 0 }}  transition={{ duration: 0.8 }}>
-            <VStack align="start" spacing={6}>
-              <Heading fontSize={{ base: "2xl", lg: "4xl" }}>Life Coaching: Empowering Your True Potential</Heading>
-              <Text fontSize={{ base: "md", lg: "lg" }}>
-                Personal growth is a journey, and life coaching provides the tools and guidance needed to unlock your fullest potential. By setting clear goals and aligning actions with values, you can achieve meaningful transformation.
-              </Text>
-            </VStack>
-          </MotionBox>
-        </MotionBox>
-
-
-
+        <Text1 />
         {/* Daily Planetary Influences */}
         <Container maxW="100%" py={{ base: '10', md: '20' }} textAlign="center">
-          <Heading fontSize="3xl">Daily Planetary Influences</Heading>
+          <Heading fontSize="3xl" fontFamily="'Georgia', serif">Daily Planetary Influences</Heading>
           <Text mt={2} color="gray.600">Discover how the stars align for you today</Text>
           <Flex wrap="wrap" justify="center" mt={6} gap={{ base: 4, xl: 5 }}>
             {[
@@ -225,8 +184,8 @@ const HomePage = () => {
             ].map(({ icon: Icon, title, desc }) => (
               <Flex key={title} p={{ base: '5', md: '50px' }} bg="yellow.50" borderRadius="md" align="center" w={{ base: "90%", md: "48%", lg: "40%", xl: '20%' }}>
                 <Icon size={40} color="orange" />
-                <MotionBox ml={{ xl: 3, base: '20%' }} initial={{ opacity: 0, x: -80 }} animate={{ opacity: 1, x: 0 }}  transition={{ duration: 0.8 }} >
-                  <Text align={'center'} fontSize={{ base: 15, md: 25 }} fontWeight="bold">{title}</Text>
+                <MotionBox ml={{ xl: 3, base: '20%' }} initial={{ opacity: 0, x: -80 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} >
+                  <Text align={'center'} fontSize={{ base: 15, md: 25 }} fontWeight="bold" fontFamily="'Georgia', serif">{title}</Text>
                   <Text fontSize={{ base: 'sm', md: 17 }} color="gray.600">{desc}</Text>
                 </MotionBox>
               </Flex>
@@ -235,9 +194,9 @@ const HomePage = () => {
         </Container>
 
         {/* My Expertise */}
-        <Box bg="yellow.50" py={10}>
+        <Box bg="" py={10}>
           <Container maxW={{ xl: "100%", base: '6xl' }} textAlign="center">
-            <Heading fontSize="3xl">My Expertise</Heading>
+            <Heading fontSize="3xl" fontFamily="'Georgia', serif">My Expertise</Heading>
             <Text mt={2} color="gray.600">Comprehensive spiritual guidance for your journey</Text>
             <Flex wrap="wrap" justify="center" mt={6} gap={4}>
               {[
@@ -248,12 +207,12 @@ const HomePage = () => {
                 <Flex key={title} p={{ base: 6, lg: 7, xl: 10 }} bg="white" borderRadius="md" boxShadow="md" align="center" w={{ base: "100%", md: "48%", lg: "30%", xl: '25%' }}>
                   <Icon size={40} color="orange" />
                   <Link to={'/book'}>
-                  <Box ml={{ xl: 3, base: '20%' }}                   _hover={{ transform: "scale(1.05)", transition: "0.3s ease-in-out" }}
-                  >
-                    <Text fontWeight="bold" fontSize={{ base: 15, md: 25 }}>{title}</Text>
-                    <Text color="gray.600" fontSize={{ base: 'sm', md: 15 }}>{desc}</Text>
-                    <Text color="orange.500" mt={2} fontSize={{ base: 'sm', md: 20 }} cursor="pointer">Learn more →</Text>
-                  </Box>
+                    <Box ml={{ xl: 3, base: '20%' }} _hover={{ transform: "scale(1.05)", transition: "0.3s ease-in-out" }}
+                    >
+                      <Text fontWeight="bold" fontSize={{ base: 15, md: 25 }}>{title}</Text>
+                      <Text color="gray.600" fontSize={{ base: 'sm', md: 15 }}>{desc}</Text>
+                      <Text color="orange.500" mt={2} fontSize={{ base: 'sm', md: 20 }} cursor="pointer">Learn more →</Text>
+                    </Box>
                   </Link>
 
                 </Flex>
@@ -263,24 +222,17 @@ const HomePage = () => {
         </Box>
 
 
-
-
         {/* Services Section */}
-        <Box bgColor={"white"} shadow={"lg"} color={"orange.700"} py={5} paddingTop={{ base: '20', lg: '100', xl:'40' }}>
+        <Box bgColor={"#F8F9FA"} shadow={"lg"} color={"orange.700"} py={5} paddingTop={{ base: '20', lg: '100', xl: '40' }}>
           <Text
             textAlign={"center"}
-            fontSize={{ base: 24, md: 30 }}
+            fontSize={{ base: 35, md: 40 }}
             fontWeight={400}
-            fontFamily={"Playfair Display"}
-          >
+            fontFamily="'Georgia', serif"          >
             Sacred Services
           </Text>
-        </Box>
-
         {/* Services Grid */}
         <Box
-          bgColor={"#FFFBEB"}
-          bgGradient="linear(to-r,rgb(253, 244, 209), white)"
           display="flex"
           justifyContent="center"
           alignItems="center"
@@ -303,11 +255,11 @@ const HomePage = () => {
                 >
                   <Image src={info.image} alt="image" borderRadius={20} w="full" />
 
-                  <Text fontSize={{ base: 18, md: 20 }} fontWeight={"bold"} fontFamily={"Playfair Display"} color={"orange.700"}>
+                  <Text fontSize={{ base: 20, md: 25 }} fontWeight={"medium"} fontFamily={"Playfair Display"} color={"orange.700"}>
                     {info.title}
                   </Text>
 
-                  <Text fontSize={{ base: 14, md: 16 }} px={2} fontFamily="Poppins">
+                  <Text fontSize={{ base: 14, md: 16 }} px={2} >
                     {info.info}
                   </Text>
                 </VStack>
@@ -315,6 +267,9 @@ const HomePage = () => {
             ))}
           </SimpleGrid>
         </Box>
+        </Box>
+
+        <PackageSelector/>
 
         {/* Articles Section */}
         <Container maxW="100%" py={12} bg="white" borderRadius={20} shadow="lg">
@@ -331,32 +286,34 @@ const HomePage = () => {
           </Heading>
 
           {/* Articles Grid */}
-          <SimpleGrid columns={{ base: 2, md: 2, lg: 3 }} spacing={10} px={2} justifyItems="center">
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10} px={2} justifyItems="center">
             {articles.map((articles, index) => (
-              <Link to={`/article/${articles.id}`} key={articles.id} style={{ width: "100%" }}>  
+              <Link to={`/article/${articles.id}`} key={articles.id} style={{ width: "100%" }}>
                 <VStack
                   p={{ base: 0, md: 6, lg: 8 }}
-                  borderWidth={2}
-                  rounded={"full"}
+                  borderWidth={3}
                   bg="white"
                   width="full"
                   textAlign="center"
                   cursor="pointer"
                   _hover={{ transform: "scale(1.05)", transition: "0.3s ease-in-out", shadow: "xl" }}
                 >
-                  <Image src={articles.image} alt={articles.title} borderRadius="md" w={{ base: "full", xl: 300 }} maxH="250px" objectFit="cover" rounded={'full'} />
-
-                  <Text fontSize={{ base: "lg", md: "xl", lg: "2xl" }} fontWeight="bold" fontFamily="Playfair Display" textColor="orange.700" mt={3}>
+                  <Image src={articles.image} alt={articles.title}  w={{ base: "full", xl: 300 }} maxH="250px" objectFit="cover" />
+                  <Box>
+                    <VStack>
+                    <Text fontSize={{ base: "xl", md: "2xl" }}  fontFamily="Playfair Display" px={5} textColor="orange.700" mt={3}>
                     {articles.title}
                   </Text>
 
-                  <Text fontSize={{ base: "sm", md: "md", lg: "lg" }} fontFamily="Poppins" px={3} noOfLines={3}>
+                  <Text fontSize={{ base: "sm", md: "md", lg: "lg" }}  px={3} noOfLines={3}>
                     {articles.info}
                   </Text>
 
                   <Text fontWeight="bold" color="orange.700" mt={2} _hover={{ textDecoration: "underline" }}>
                     Read more <ArrowForwardIcon />
                   </Text>
+                    </VStack>
+                  </Box>
                 </VStack>
               </Link>
             ))}
@@ -364,7 +321,7 @@ const HomePage = () => {
         </Container>
 
         {/* Our Products Section */}
-        <Box textAlign={"center"} paddingY={10} paddingTop={{base:20, lg:30, xl:30}}>
+        <Box textAlign={"center"} paddingY={10} paddingTop={{ base: 20, lg: 30, xl: 30 }}>
           <Text fontSize={25} fontStyle={"bold"}>
             Our Sacred Items
           </Text>
@@ -386,14 +343,14 @@ const HomePage = () => {
                 </Link>
 
                 <Box mt={4} textAlign="center">
-                    <Link to={'/shop'}>
+                  <Link to={'/shop'}>
                     <Button
                       colorScheme="orange"
                       size="sm"
                     >
                       go to shop
                     </Button>
-                    </Link>
+                  </Link>
                 </Box>
 
 
@@ -404,8 +361,6 @@ const HomePage = () => {
             <Text>Loading products...</Text>
           )}
         </SimpleGrid>
-
-
 
       </Box>
     </Box>

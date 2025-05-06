@@ -19,16 +19,20 @@ import ContactPage from "./store/ContactPage";
 import Login from "./pages/Login";
 import Checkout from "./pages/Checkout";
 import Register from "./pages/Register";
+import Index from "./pages/Index";
+import Indexx from "./pages/Indexx";
+
 
 
 function App() {
 	return (
 		<Box minH={"100vh"} bg={'white'} >
 			<ScrollToTop />
-			<Navbar />
 			<WhatsAppButton />
 			<Routes>
 				<Route path='/' element={<HomePage />} />
+				<Route path='/1' element={<Index />} />
+				<Route path='/2' element={<Indexx />} />
 				<Route path='/create' element={<LogisticsApp />} />
 				<Route path='/admin' element={<AdminDashboard />} />
 				<Route path='/services' element={<ServicePage />} />
