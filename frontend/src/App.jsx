@@ -27,6 +27,7 @@ import Indexx from "./pages/Indexx";
 function App() {
 	return (
 		<Box minH={"100vh"} bg={'white'} >
+			<Navbar/>
 			<ScrollToTop />
 			<WhatsAppButton />
 			<Routes>

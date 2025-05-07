@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
+import "./global.css";
 
 
 // Create a custom theme with mystical purple and indigo colors
@@ -59,10 +60,27 @@ const theme = extendTheme({
 	},
   });
 
+  const theme1 = extendTheme({
+	colors: {
+	  astral: {
+		cream: "#FFF9F0",
+		peach: "#FFD6C2",
+		orange: "#F97316",
+		orangeAlpha: {
+		  800: "rgba(249, 115, 22, 0.9)",
+		},
+		gold: "#D4AF37",
+		goldAlpha: {
+		  100: "rgba(212, 175, 55, 0.05)",
+		},
+	  },
+	},
+  });
+
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<ChakraProvider>
+			<ChakraProvider  theme={theme1}>
 				<App />
 			</ChakraProvider>
 		</BrowserRouter>

@@ -26,24 +26,25 @@ import Hero from "../components/Hero";
 import { FaSun, FaMoon, FaMercury, FaVenus, FaStar, FaInfinity, FaHandSparkles } from "react-icons/fa";
 import { ArrowForwardIcon, DeleteIcon, EditIcon, InfoIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
-import ProductCard from "../components/UserProductCard";
 import { useProductStore } from "../store/product"; // Import Zustand store
-import img9 from "../images/img9.png"
-import img8 from "../images/img8.png"
-import lotus1 from "../images/lotus1.png"
 import hero1 from "../images/hero1.jpg"
-import { useCartStore } from "../store/cart";
 import articles from "../store/articles";
 import { motion } from "framer-motion";
 import Text1 from "../components1/Text1";
 import PackageSelector from "../components1/PackageSelector";
+import HeroSection from "../components3/HeroSection";
+import ServicesSection from "../components3/ServicesSection"
+import ShopSection from "../components3/ShopSection"; // Adjust path as needed
+import HoroscopeSection from "../components3/HoroscopeSection";
+import ConsultationSection from "../components3/ConsultationSection"
+import ContactSection from "../components3/ContactSection"
+import NewsletterSection from "../components3/NewsletterSection"
+
 const MotionBox = motion(Box);
 
 
 const HomePage = () => {
   const { products, fetchProducts } = useProductStore(); // Get products & fetch function
-  const { cart, addToCart, addFromCart, removeFromCart, updateQuantity, totalPrice } = useCartStore();
-  const [isCartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
     fetchProducts(); // Fetch products when the page loads
@@ -85,11 +86,6 @@ const HomePage = () => {
       info: "Experience divine blessings through sacred Puja and Homa rituals, designed to attract positive energy and remove obstacles.",
       image: "https://www.tirthpurohit.org/wp-content/uploads/2017/11/img3.jpg",
     },
-    {
-      title: "",
-      info: ".",
-      image: "",
-    },
 
   ];
 
@@ -99,7 +95,7 @@ const HomePage = () => {
     <Box bgColor={"#F8F9FA"}>
       <Box mt={55}>
         {/* Hero Section */}
-        <Hero />
+        <HeroSection/>
         <Box
           as="section"
           position="relative"
@@ -170,7 +166,9 @@ const HomePage = () => {
             </MotionBox>
           </Stack>
         </Box>
-        <Text1 />
+        <ServicesSection/>
+
+        <HoroscopeSection/>
         {/* Daily Planetary Influences */}
         <Container maxW="100%" py={{ base: '10', md: '20' }} textAlign="center">
           <Heading fontSize="3xl" fontFamily="'Georgia', serif">Daily Planetary Influences</Heading>
@@ -221,6 +219,8 @@ const HomePage = () => {
           </Container>
         </Box>
 
+        <ConsultationSection/>
+
 
         {/* Services Section */}
         <Box bgColor={"#F8F9FA"} shadow={"lg"} color={"orange.700"} py={5} paddingTop={{ base: '20', lg: '100', xl: '40' }}>
@@ -269,7 +269,8 @@ const HomePage = () => {
         </Box>
         </Box>
 
-        <PackageSelector/>
+        {/* <PackageSelector/> */}
+        <Text1 />
 
         {/* Articles Section */}
         <Container maxW="100%" py={12} bg="white" borderRadius={20} shadow="lg">
@@ -320,16 +321,10 @@ const HomePage = () => {
           </SimpleGrid>
         </Container>
 
-        {/* Our Products Section */}
-        <Box textAlign={"center"} paddingY={10} paddingTop={{ base: 20, lg: 30, xl: 30 }}>
-          <Text fontSize={25} fontStyle={"bold"}>
-            Our Sacred Items
-          </Text>
-        </Box>
-
         {/* Shop Section */}
+        <ShopSection/>
         {/* Product Grid */}
-        <SimpleGrid columns={{ base: 2, md: 3, lg: 4 }} spacing={6}>
+        {/* <SimpleGrid columns={{ base: 2, md: 3, lg: 4 }} spacing={6}>
           {Array.isArray(products) ? (
             products.map((product) => (
               <Box key={product._id} borderWidth="1px" borderRadius="lg" overflow="hidden" p={4}>
@@ -360,8 +355,9 @@ const HomePage = () => {
           ) : (
             <Text>Loading products...</Text>
           )}
-        </SimpleGrid>
-
+        </SimpleGrid> */}
+        <ContactSection/>
+        <NewsletterSection/>
       </Box>
     </Box>
 
