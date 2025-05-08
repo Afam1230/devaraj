@@ -5,16 +5,20 @@ import {
   Text,
   Image,
   Stack,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { useProductStore } from "../store/product"; // Zustand store
+import { useNavigate } from "react-router-dom";
 
 const ShopSection = () => {
-  const { products, fetchProducts } = useProductStore();
 
+  const { products, fetchProducts } = useProductStore();
   useEffect(() => {
     fetchProducts(); // Fetch products when component mounts
   }, []);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,7 +42,7 @@ const ShopSection = () => {
 
   return (
     <section id="shop" style={{ padding: "6rem 0", backgroundColor: "#ffffff" }}>
-      <Box maxW="7xl" mx="auto" px="4">
+      <Box maxW="90vw" mx="auto" px="4">
         <Box textAlign="center" maxW="3xl" mx="auto" mb="16">
           <Text fontSize={{ base: "3xl", md: "4xl" }} fontFamily="serif" fontWeight="bold" mb="4">
             Celestial Shop
@@ -49,13 +53,12 @@ const ShopSection = () => {
           </Text>
         </Box>
 
-        <Stack
-          direction={{ base: "column", sm: "row", md: "row" }}
-          spacing="8"
-          justify="center"
-          wrap="wrap"
+        <SimpleGrid
+          columns={{ base: 1, sm: 2, md: 2, xl: 4 }}
+          spacing={8}
+          justifyItems="center"
         >
-          {products.map((product, index) => {
+          {products.slice(0,4).map((product, index) => {
             const randomRating = Math.floor(Math.random() * 3) + 3; // 3 to 5
             const randomReviews = Math.floor(Math.random() * 11); // 0 to 10
 
@@ -82,7 +85,7 @@ const ShopSection = () => {
                     alt={product.name}
                     objectFit="cover"
                     w="100%"
-                    h="200px"
+                    h="400px"
                     transition="transform 0.5s"
                   />
                   <Box
@@ -119,8 +122,8 @@ const ShopSection = () => {
                     {product.name}
                   </Text>
                   <Stack direction="row" justify="space-between" align="center" mb="4">
-                    <Text fontWeight="bold" color="#FF9A8B">
-                      {product.price}
+                    <Text fontWeight="bold" color="orange.500">
+                      ${product.price}
                     </Text>
                     <Stack direction="row" align="center">
                       <Stack direction="row" spacing="1">
@@ -128,7 +131,7 @@ const ShopSection = () => {
                           <StarIcon
                             key={i}
                             boxSize={4}
-                            color={i < randomRating ? "#D4AF37" : "gray.300"}
+                            color={i < randomRating ? "yellow.400" : "gray.300"}
                           />
                         ))}
                       </Stack>
@@ -140,8 +143,8 @@ const ShopSection = () => {
                   <Button
                     variant="outline"
                     w="full"
-                    borderColor="#FF9A8B"
-                    color="#FF9A8B"
+                    borderColor="orange.500"
+                    color="orange.500"
                     _hover={{
                       backgroundColor: "#FF9A8B",
                       color: "white",
@@ -153,7 +156,7 @@ const ShopSection = () => {
               </Box>
             );
           })}
-        </Stack>
+        </SimpleGrid>
 
         <Box textAlign="center" className="section-fade-in" mt="12">
           <Button
@@ -166,6 +169,7 @@ const ShopSection = () => {
             rounded="full"
             px="8"
             py="3"
+            onClick={()=>{navigate("/shop")}}
           >
             Visit Full Shop
           </Button>

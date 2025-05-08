@@ -12,6 +12,7 @@ import {
   Circle,
   useColorModeValue,
 } from "@chakra-ui/react";
+import hero from "../images/hero.jpg"
 
 const AboutSection = () => {
   useEffect(() => {
@@ -127,7 +128,7 @@ const AboutSection = () => {
                   overflow="hidden"
                   bgGradient="linear(to-br, astral.peach, astral.orange)"
                   aspectRatio={4 / 5}
-                  backgroundImage={`url(https://images.unsplash.com/photo-1634729108541-445c9df297e5?fit=crop&w=600&h=750)`}
+                  backgroundImage={hero}
                   backgroundSize="cover"
                   backgroundPosition="center"
                   w="full"

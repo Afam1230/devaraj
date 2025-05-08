@@ -3,7 +3,7 @@ import { Button, Input, useToast, Box, Text } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 
 const NewsletterSection = () => {
-  const { toast } = useToast();
+  const  toast  = useToast();
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 

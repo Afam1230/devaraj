@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { Button, Box, Text, Stack, useBreakpointValue } from "@chakra-ui/react";
+import { Button, Box, Text, Stack, useBreakpointValue, SimpleGrid } from "@chakra-ui/react";
 import { StarIcon, CalendarIcon, MoonIcon } from "@chakra-ui/icons";
 import { GiCompass } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
 
 const services = [
   {
@@ -31,6 +32,7 @@ const services = [
 ];
 
 const ServicesSection = () => {
+  const navigate = useNavigate()
   // Animation observer
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -54,7 +56,7 @@ const ServicesSection = () => {
 
   return (
     <section id="services" style={{ padding: "6rem 0", backgroundColor: "#ffffff" }}>
-      <Box maxW="7xl" mx="auto" px="4">
+      <Box maxW="100%" mx="auto" px="4">
         <Box textAlign="center" maxW="3xl" mx="auto" mb="16">
           <Text fontSize={{ base: "3xl", md: "4xl" }} fontFamily="serif" fontWeight="bold" mb="4">
             Celestial Services
@@ -65,11 +67,10 @@ const ServicesSection = () => {
           </Text>
         </Box>
 
-        <Stack
-          direction={{ base: "column", md: "row", lg: "row" }}
-          spacing="6"
-          justify="center"
-          wrap="wrap"
+        <SimpleGrid
+          columns={{ base: 1, sm: 2, md: 2, lg: 4 }}
+          spacing={8}
+          justifyItems="center"
         >
           {services.map((service, index) => (
             <Box
@@ -103,19 +104,19 @@ const ServicesSection = () => {
                 <service.icon color="#FF9A8B" boxSize="6" />
               </Box>
               <Box p="6">
-                <Text fontSize="xl" fontWeight="bold" mb="2">
+                <Text fontSize={{base:"xl", xl:"2xl"}} fontWeight="bold" mb="2">
                   {service.title}
                 </Text>
-                <Text color="gray.500" mb="4">
+                <Text color="gray.500" mb="4" fontSize={{base:"sm", xl:"2xl"}} >
                   {service.description}
                 </Text>
-                <Button variant="ghost" colorScheme="orange" _hover={{ color: "#FF9A8B" }}>
+                <Button variant="ghost" onClick={()=>{navigate("/book")}} colorScheme="orange" _hover={{ color: "#FF9A8B" }}>
                   Learn more &rarr;
                 </Button>
               </Box>
             </Box>
           ))}
-        </Stack>
+        </SimpleGrid>
 
         <Box textAlign="center" className="section-fade-in" mt="8">
           <Button
@@ -125,6 +126,9 @@ const ServicesSection = () => {
             rounded="full"
             px="8"
             py="3"
+            size={"lg"}
+            onClick={()=>{navigate("/services")}}
+
           >
             View All Services
           </Button>

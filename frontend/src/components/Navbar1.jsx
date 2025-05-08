@@ -6,12 +6,10 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi"; // React Icons
-import { MdAccountCircle } from "react-icons/md";
-import logo from "../images/logo.png";
 import img8 from "../images/img8.png"
-import { FaYoutube, FaTelegramPlane, FaFacebook, FaWhatsapp, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import logo1 from "../images/logo1.png"
+import { FaYoutube,  FaFacebook, FaWhatsapp} from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
-import Cart from "../pages/Cart";
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -20,7 +18,6 @@ const Navbar = () => {
             bg="white"
             boxShadow="md"
             px={5}
-            // bgGradient="linear(to-r, white, blue.200)" // ✅ Fixed Gradient
             position="fixed" // ✅ Make Navbar Stick to the Top
             top="0"
             left="0"
@@ -30,7 +27,7 @@ const Navbar = () => {
             <Flex justifyContent="space-between" alignItems="center">
                 {/* Logo and Title */}
                 <HStack spacing={5}>
-                    <Image src={logo} alt="Logo" h={{ lg: '100px', base: '50px', md: '80px' }} />
+                    <Image src={logo1} alt="Logo" h={{ lg: '100px', base: '50px', md: '80px' }} />
                     <Heading fontFamily={"DM Serif Text"} size="lg" color="#2C3E50">Astro Devaraj</Heading>
                 </HStack>
 

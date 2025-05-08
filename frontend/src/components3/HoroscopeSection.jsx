@@ -52,9 +52,9 @@ const HoroscopeSection = () => {
         zIndex={-1}
       />
 
-      <Box maxW="6xl" mx="auto" px={4}>
-        <Box textAlign="center" maxW="3xl" mx="auto" mb={16}>
-          <Heading as="h2" size="xl" mb={4}>
+      <Box maxW="100vw" mx="auto" px={4}>
+        <Box textAlign="center" maxW="100vw" mx="auto" mb={16}>
+          <Heading as="h2" size={{base:"lg",md:"xl", xl:"2xl"}} mb={4}>
             Your Celestial Forecast
           </Heading>
           <Box w={16} h={1} bg="orange.400" mx="auto" mb={6} borderRadius="full" />
@@ -64,7 +64,7 @@ const HoroscopeSection = () => {
         </Box>
 
         <Box
-          maxW="4xl"
+          maxW={{base:"4xl", xl:"70vw"}}
           mx="auto"
           bg={bgColor}
           borderRadius="xl"
@@ -76,14 +76,14 @@ const HoroscopeSection = () => {
           <Tabs variant="enclosed" colorScheme="orange">
             <Flex direction={{ base: 'column', md: 'row' }} gap={8}>
               <Box w={{ base: '100%', md: '33%' }}>
-                <Heading as="h3" size="md" mb={3}>
+                <Heading as="h3" size={{base:"lg",md:"xl", xl:"2xl"}} mb={3}>
                   Select Your Sign
                 </Heading>
                 <Grid templateColumns="repeat(3, 1fr)" gap={2} mb={6}>
                   {zodiacSigns.map((sign) => (
                     <Button
                       key={sign.name}
-                      size="sm"
+                      size={{base:"sm",md:"lg", xl:"lg"}}
                       variant={selectedSign === sign.name ? 'solid' : 'outline'}
                       colorScheme="orange"
                       onClick={() => setSelectedSign(sign.name)}
@@ -93,10 +93,10 @@ const HoroscopeSection = () => {
                   ))}
                 </Grid>
 
-                <Heading as="h4" size="sm" mb={2}>
+                <Heading as="h4" size={{base:"sm",xl:"xl"}}mb={2}>
                   {selectedSign}
                 </Heading>
-                <Text fontSize="sm" color="gray.500" mb={4}>
+                <Text fontSize={{base:"sm",xl:"xl"}} color="gray.500" mb={4}>
                   {zodiacSigns.find((sign) => sign.name === selectedSign)?.dates}
                 </Text>
 
@@ -119,7 +119,7 @@ const HoroscopeSection = () => {
                         borderColor={borderColor}
                       >
                         <Flex justify="space-between" align="center" mb={4}>
-                          <Heading as="h3" size="md">
+                          <Heading as="h3" size={{base:"sm",xl:"xl"}}>
                             {selectedSign} {type} Horoscope
                           </Heading>
                           <Flex>
@@ -134,7 +134,7 @@ const HoroscopeSection = () => {
                           </Flex>
                         </Flex>
 
-                        <Text mb={4} fontSize={{ base: 'sm', md: 'md' }}>
+                        <Text mb={4} fontSize={{ base: 'sm', md: 'md', xl:"xl" }}>
                           The cosmic energies are aligning in your favor, {selectedSign}. This {type.toLowerCase()} brings opportunities for growth in your personal relationships and career aspirations. Pay attention to subtle messages from the universe guiding you toward your true path.
                         </Text>
 
@@ -165,7 +165,7 @@ const HoroscopeSection = () => {
                           </Box>
                         </Grid>
 
-                        <Button colorScheme="orange" w="full">
+                        <Button colorScheme="orange" onClick={()=>{navigate("/book")}} w="full">
                           Get Full {type} Reading
                         </Button>
                       </Box>

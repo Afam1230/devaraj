@@ -21,6 +21,7 @@ import {
   useToast,
   Divider,
   Flex,
+  AspectRatio,
 } from "@chakra-ui/react";
 import Hero from "../components/Hero";
 import { FaSun, FaMoon, FaMercury, FaVenus, FaStar, FaInfinity, FaHandSparkles } from "react-icons/fa";
@@ -39,6 +40,7 @@ import HoroscopeSection from "../components3/HoroscopeSection";
 import ConsultationSection from "../components3/ConsultationSection"
 import ContactSection from "../components3/ContactSection"
 import NewsletterSection from "../components3/NewsletterSection"
+import logo1 from "../images/logo1.png"
 
 const MotionBox = motion(Box);
 
@@ -92,14 +94,16 @@ const HomePage = () => {
 
 
   return (
-    <Box bgColor={"#F8F9FA"}>
+    <Box>
       <Box mt={55}>
         {/* Hero Section */}
-        <HeroSection/>
+        <HeroSection />
         <Box
+          bgSize="cover"
+          bgRepeat="no-repeat"
+          bgPosition="center"
           as="section"
           position="relative"
-          py={{ base: 10, md: 20, lg: 24 }}
           px={{ base: 6, md: 10, lg: 16 }}
           display="flex"
           justifyContent="center"
@@ -160,6 +164,7 @@ const HomePage = () => {
                   objectFit="cover"
                   w="full"
                   h="full"
+                  aspectRatio={1}
                   objectPosition={'100% 0vh'}
                 />
               </Box>
@@ -172,6 +177,7 @@ const HomePage = () => {
         {/* Daily Planetary Influences */}
         <Container maxW="100%" py={{ base: '10', md: '20' }} textAlign="center">
           <Heading fontSize="3xl" fontFamily="'Georgia', serif">Daily Planetary Influences</Heading>
+          <Box w={16} h={1} bg="orange.400" mx="auto" mb={6} borderRadius="full" />
           <Text mt={2} color="gray.600">Discover how the stars align for you today</Text>
           <Flex wrap="wrap" justify="center" mt={6} gap={{ base: 4, xl: 5 }}>
             {[
@@ -180,7 +186,7 @@ const HomePage = () => {
               { icon: FaMercury, title: "Mercury", desc: "Direct in Gemini, favoring communication" },
               { icon: FaVenus, title: "Venus", desc: "In Libra, harmonizing relationships" }
             ].map(({ icon: Icon, title, desc }) => (
-              <Flex key={title} p={{ base: '5', md: '50px' }} bg="yellow.50" borderRadius="md" align="center" w={{ base: "90%", md: "48%", lg: "40%", xl: '20%' }}>
+              <Flex key={title} p={{ base: '5', md: '50px' }}  borderColor={'yellow.400'} shadow={"lg"} borderRadius="md" borderWidth={3} align="center" w={{ base: "90%", md: "48%", lg: "40%", xl: '20%' }}>
                 <Icon size={40} color="orange" />
                 <MotionBox ml={{ xl: 3, base: '20%' }} initial={{ opacity: 0, x: -80 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} >
                   <Text align={'center'} fontSize={{ base: 15, md: 25 }} fontWeight="bold" fontFamily="'Georgia', serif">{title}</Text>
@@ -195,6 +201,7 @@ const HomePage = () => {
         <Box bg="" py={10}>
           <Container maxW={{ xl: "100%", base: '6xl' }} textAlign="center">
             <Heading fontSize="3xl" fontFamily="'Georgia', serif">My Expertise</Heading>
+            <Box w={16} h={1} bg="orange.400" mx="auto" mb={6} borderRadius="full" />
             <Text mt={2} color="gray.600">Comprehensive spiritual guidance for your journey</Text>
             <Flex wrap="wrap" justify="center" mt={6} gap={4}>
               {[
@@ -223,7 +230,7 @@ const HomePage = () => {
 
 
         {/* Services Section */}
-        <Box bgColor={"#F8F9FA"} shadow={"lg"} color={"orange.700"} py={5} paddingTop={{ base: '20', lg: '100', xl: '40' }}>
+        <Box bgColor={"#F8F9FA"} bgGradient={"linear(to-br, #FFF9F0, #F8F9FA)"} shadow={"lg"} color={"orange.700"} py={5} paddingTop={{ base: '20', lg: '100', xl: '40' }}>
           <Text
             textAlign={"center"}
             fontSize={{ base: 35, md: 40 }}
@@ -231,8 +238,9 @@ const HomePage = () => {
             fontFamily="'Georgia', serif"          >
             Sacred Services
           </Text>
+          <Box w={40} h={1} bg="orange.400" mx="auto" mt={2} borderRadius="full" />
         {/* Services Grid */}
-        <Box
+        {/* <Box
           display="flex"
           justifyContent="center"
           alignItems="center"
@@ -240,7 +248,7 @@ const HomePage = () => {
           textAlign="center"
           color={"#2C3E50"}
         >
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} px={{ base: 4, md: 8, lg: 12 }} w="100%" maxW="1200px">
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} px={{ base: 4, md: 8, lg: 12 }} w="100%" maxW="80vw">
             {InfoCard.map((info, index) => (
               <Box key={index} display="flex" justifyContent="center" py={5}>
                 <VStack
@@ -266,7 +274,7 @@ const HomePage = () => {
               </Box>
             ))}
           </SimpleGrid>
-        </Box>
+        </Box> */}
         </Box>
 
         {/* <PackageSelector/> */}

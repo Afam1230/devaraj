@@ -109,13 +109,13 @@ const ConsultationSection = () => {
         zIndex={0}
       />
 
-      <Container maxW="7xl" position="relative" zIndex={1}>
+      <Container maxW="100%" position="relative" zIndex={1}>
         <Box textAlign="center" maxW="3xl" mx="auto" mb={16} className="section-fade-in">
-          <Heading fontSize={{ base: "2xl", md: "4xl" }} fontFamily="serif" fontWeight="bold" mb={4}>
+          <Heading fontSize={{ base: "2xl", md: "4xl", xl:'5xl' }} fontFamily="serif" fontWeight="bold" mb={4}>
             Personal Consultations
           </Heading>
           <Box w={16} h={1} bg="astral.orange" mx="auto" mb={6} borderRadius="full" />
-          <Text color="gray.600">
+          <Text color="gray.600" fontSize={{ base: "xl", md: "2xl"}} >
             Discover clarity and guidance through personalized astrological readings tailored to your unique cosmic blueprint.
           </Text>
         </Box>
@@ -165,11 +165,11 @@ const ConsultationSection = () => {
 
                 <VStack align="start" spacing={4}>
                   <Box>
-                    <Heading fontSize="xl" fontFamily="serif">
+                    <Heading fontSize={{ base: "xl", md: "2xl", xl:'4xl' }}  fontFamily="serif">
                       {consultation.title}
                     </Heading>
                     <Flex align="center" mt={1} color="gray.500" fontSize="sm">
-                      <Icon as={Clock} boxSize={4} mr={1} />
+                      <Icon as={Clock} boxSize={{base:4, md:6, xl:10}} mr={1} />
                       {consultation.duration} session
                     </Flex>
                   </Box>
@@ -181,13 +181,13 @@ const ConsultationSection = () => {
                     </Text>
                   </Box>
 
-                  <Text color="gray.600">{consultation.description}</Text>
+                  <Text color="gray.600" fontSize={{ base: "md", md: "lg", xl:'xl' }} >{consultation.description}</Text>
 
                   <Stack spacing={2}>
                     {consultation.features.map((feature, idx) => (
                       <Flex key={idx} align="center">
-                        <Icon as={Star} boxSize={4} color="astral.gold" mr={2} />
-                        <Text fontSize="sm">{feature}</Text>
+                        <Icon as={Star} boxSize={{base:4, md:"6", xl:'10'}} color="astral.gold" mr={2} />
+                        <Text fontSize={{ base: "md", md: "lg", xl:'xl' }} >{feature}</Text>
                       </Flex>
                     ))}
                   </Stack>
@@ -202,6 +202,7 @@ const ConsultationSection = () => {
                     bg: consultation.popular ? "astral.orangeAlpha.800" : "astral.goldAlpha.800",
                   }}
                   rounded="full"
+                  fontSize={{xl:20, base:10}}
                 >
                   Book Now
                 </Button>

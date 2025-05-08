@@ -37,7 +37,7 @@ const Footer = () => {
 
 
     return (
-        <Box bg="orange.700" py={8} mt={100}   >
+        <Box bg="orange.700" py={8}   >
             <Stack direction={{ base: 'column', md: 'row' }} justifyContent={'space-between'} paddingX={5} textAlign={'center'} spacing={{ base: 10, md: 0, lg: 0 }} >
                 <VStack color="white">
                     <Heading as={"h3"} fontFamily="DM Serif Text">ASTRO GUIDE</Heading>

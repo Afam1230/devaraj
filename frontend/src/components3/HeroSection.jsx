@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Box, Button, Text, VStack, Heading, Flex } from "@chakra-ui/react";
 import { Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import logo1 from "../images/logo1.png"
 
 const heroContents = [
   {
@@ -25,6 +27,7 @@ const heroContents = [
 
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -104,39 +107,41 @@ const HeroSection = () => {
       ))}
 
       {/* Content */}
-      <Box maxW="3xl" textAlign="center" px={4} pt={24} zIndex={10}>
+      <Box maxW="100%" textAlign="center" px={4} pt={24} zIndex={10}>
         {/* Animated Symbol */}
-        <Box position="relative" w="5rem" h="5rem" mx="auto" mb={8}>
-          <Box
-            position="absolute"
-            inset={0}
-            border="2px solid"
-            borderColor="astral.gold"
-            borderRadius="full"
-            className="animate-spin-slow"
-          />
-          <Box
-            position="absolute"
-            inset="12px"
-            border="2px solid"
-            borderColor="astral.orange"
-            borderRadius="full"
-            className="animate-spin-slow"
-            style={{ animationDirection: "reverse" }}
-          />
-          <Box
-            position="absolute"
-            inset="24px"
-            border="2px solid"
-            borderColor="astral.gold"
-            borderRadius="full"
-            className="animate-spin-slow"
-            style={{ animationDuration: "15s" }}
-          />
-          <Flex position="absolute" inset={0} align="center" justify="center">
-            <Star color="#F97316" fill="#F97316" size={24} />
-          </Flex>
-        </Box>
+        <Box position="relative" w={{md:"50vw", base:"80vw",}} h={{base:"20rem", md:"30rem"}} mx="auto" mb={8}>
+  <Box
+    position="absolute"
+    inset={0}
+    border="3px solid"
+    borderColor="astral.gold"
+    borderRadius="full"
+    className="animate-spin-slow"
+  />
+  <Box
+    position="absolute"
+    inset="20px"
+    border="4px solid"
+    borderColor="astral.orange"
+    borderRadius="full"
+    className="animate-spin-slow"
+    style={{ animationDirection: "reverse" }}
+  />
+  <Box
+    position="absolute"
+    inset="40px"
+    border="3px solid"
+    borderColor="astral.gold"
+    borderRadius="full"
+    className="animate-spin-slow"
+    style={{ animationDuration: "15s" }}
+  />
+  <Flex position="absolute" inset={0} align="center" justify="center">
+    <img src={logo1} style={{ maxWidth: "60%", maxHeight: "60%" }} />
+  </Flex>
+</Box>
+
+
 
         <Box position="relative" minH="240px">
           {heroContents.map((content, index) => (
@@ -193,8 +198,9 @@ const HeroSection = () => {
             color="white"
             borderRadius="full"
             px={8}
+            onClick={() => { navigate("/book") }}
           >
-            Free Reading
+            Get Reading
           </Button>
           <Button
             variant="outline"
@@ -203,6 +209,8 @@ const HeroSection = () => {
             _hover={{ bg: "astral.goldAlpha.100" }}
             borderRadius="full"
             px={8}
+            onClick={() => { navigate("/about") }}
+
           >
             Learn More
           </Button>
