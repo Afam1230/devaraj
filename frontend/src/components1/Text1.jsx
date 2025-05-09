@@ -51,7 +51,7 @@ export default function Text1() {
             fontWeight="medium"
             fontFamily="'Playfair Display', serif"
           >
-            ASTROLOGY OF THE MOON BY JASON HERRING
+            "WHAT IS ASTROLOGY?" BY DEVARISHI DAS ASAMOAH
           </Heading>
 
           <Text fontSize="md" lineHeight="1.8" color={"#4A4A4A"}>
@@ -62,13 +62,13 @@ export default function Text1() {
               display="inline"
               color="#4A4A4A"
             >
-              L
+              A
             </Text>
-            orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur officia
-            deserunt mollit anim id est laborum Amet mauris commodo quis imperdiet.
+            strology is the ancient science of interpreting the influence of celestial bodies on human life.
+            It is not mere superstition but a profound system rooted in thousands of years of observation.
+            From the moment of our birth, the sky imprints a unique energetic map—our natal chart.
+            This chart reveals our personality, life path, challenges, and karmic lessons. Astrology teaches us that we are not separate from the cosmos—we are part of it.
+            The planets don’t cause events but reflect them, like a clock reflects time.
           </Text>
 
           <Heading
@@ -80,14 +80,14 @@ export default function Text1() {
           </Heading>
 
           <Text fontSize="md" lineHeight="1.8" color={"#4A4A4A"}>
-            Arcu non sodales neque sodales ut etiam sit amet. Semper risus in hendrerit gravida
-            rutrum quisque non tellus orci ac placerat vest eu facilisis sed odio morbi quis. Egestas
-            tellus rutrum tell.
+            Astrology does not dictate our fate—it highlights the energies and choices available.
+            When used wisely, it becomes a tool for insight and transformation.
+            It empowers us to respond, not react, to life’s unfolding.
           </Text>
 
           <Box>
             <Text fontWeight="bold" color="#2C7A7B">
-              Jason H.
+              Devarishi Das Asamoah.
             </Text>
             <Text fontSize="xs" color="gray.500">
               AWARD WINNING AUTHOR

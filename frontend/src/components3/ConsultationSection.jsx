@@ -19,48 +19,67 @@ import { useNavigate } from "react-router-dom";
 const consultations = [
   {
     title: "Cosmic Discovery",
-    duration: "30 min",
-    price: "$75",
+    duration: "6 Months Readings",
+    price: "$50",
     description:
       "A brief introduction to your astrological profile, perfect for first-time clients seeking quick insights.",
     features: [
       "Birth Chart Overview",
-      "Current Transit Analysis",
-      "One Key Question Answered",
+      " Transit Analysis",
+      " Key Questions Answered",
+      "Monthly Breakdown",
+      "Key Dates and Events"
     ],
     popular: false,
   },
   {
     title: "Celestial Guidance",
-    duration: "60 min",
-    price: "$150",
+    duration: "1 Year Reading",
+    price: "$100",
     description:
       "Our most popular comprehensive reading that explores your cosmic blueprint in detail.",
     features: [
-      "Complete Birth Chart Analysis",
-      "Yearly Forecast",
-      "Three Questions Explored",
-      "Recorded Session",
-      "Follow-up Email",
+      "Comprehensive Yearly Forecast",
+      "Seasonal Trends",
+      "Major Life Events Predictions",
+      "Compatibility Insights",
+      "12-Month Action Guide",
     ],
     popular: true,
   },
   {
     title: "Astral Mastery",
-    duration: "90 min",
-    price: "$225",
+    duration: "3 Years Reading",
+    price: "$200",
     description:
       "An in-depth cosmic exploration for those seeking profound understanding and transformation.",
     features: [
       "Advanced Chart Techniques",
-      "Past Life Insights",
-      "Career & Relationship Guidance",
-      "12-Month Personalized Timeline",
-      "Recorded Session",
-      "Two Follow-up Emails",
+      "Long-Term Life Path Insights",
+      "Year-by-Year Overview",
+      "Transformation Timelines",
+      "Relationship Analysis",
+      "Annual Action Plans",
     ],
     popular: false,
   },
+    {
+    title: "Astral Ultimate",
+    duration: "5 Years Reading",
+    price: "$350",
+    description:
+      "An in-depth cosmic exploration for those seeking profound understanding and transformation.",
+    features: [
+      "Ultimate Cosmic Blueprint",
+      "Yearly and Bi-Annual Forecasts",
+      "Major Life Cycles Unveiled",
+      "Goal Alignment Strategy",
+      "Financial and Career Opportunities",
+      "Exclusive Personalized Recommendations",
+    ],
+    popular: false,
+  },
+  
 ];
 
 const ConsultationSection = () => {
@@ -168,19 +187,19 @@ const ConsultationSection = () => {
 
                 <VStack align="start" spacing={4}>
                   <Box>
-                    <Heading fontSize={{ base: "xl", md: "2xl", xl:'4xl' }}  fontFamily="serif">
+                    <Heading fontSize={{ base: "xl", md: "2xl", xl:'4xl' }} color="orange.500" fontFamily="serif">
                       {consultation.title}
                     </Heading>
-                    <Flex align="center" mt={1} color="gray.500" fontSize="sm">
+                    <Flex align="center" mt={1} fontWeight={'bold'} fontSize={{ base: "xl", md: "2xl", xl:'4xl' }}>
                       <Icon as={Clock} boxSize={{base:4, md:6, xl:10}} mr={1} />
-                      {consultation.duration} session
+                      {consultation.duration}
                     </Flex>
                   </Box>
 
                   <Box>
                     <Text fontSize="3xl" fontWeight="bold">
                       {consultation.price}
-                      <Text as="span" fontSize="md" color="gray.500"> / session</Text>
+                      <Text as="span" fontSize="md" color="gray.500"></Text>
                     </Text>
                   </Box>
 

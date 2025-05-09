@@ -18,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { Mail, MapPin, Phone } from "lucide-react";
 
+
 const ContactSection = () => {
   const toast = useToast();
   const [formData, setFormData] = useState({
@@ -211,7 +212,7 @@ const ContactSection = () => {
               ))}
             </Grid>
 
-            <Box bg="white" borderRadius="xl" overflow="hidden" boxShadow="md" border="1px solid" borderColor="orange.100" h={{ base: "250px", md: "300px" }}>
+            {/* <Box bg="white" borderRadius="xl" overflow="hidden" boxShadow="md" border="1px solid" borderColor="orange.100" h={{ base: "250px", md: "300px" }}>
               <iframe
                 title="Map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830921266!2d-74.11976383878909!3d40.69766374873451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1651561581742!5m2!1sen!2sin"
@@ -221,7 +222,7 @@ const ContactSection = () => {
                 allowFullScreen=""
                 loading="lazy"
               />
-            </Box>
+            </Box> */}
           </VStack>
         </Stack>
       </Box>

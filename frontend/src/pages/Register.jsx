@@ -14,6 +14,7 @@ const Register = () => {
     const [form, setForm] = useState({
         fullName: "",
         email: "",
+        phone: "",
         password: "",
         confirmPassword: "",
     });
@@ -36,7 +37,7 @@ const Register = () => {
         }
 
         try {
-            await register(form.fullName, form.email, form.password);
+            await register(form.fullName, form.email, form.phone, form.password);
             toast({
                 title: "Registration successful!",
                 status: "success",
@@ -81,6 +82,17 @@ const Register = () => {
                                     value={form.email}
                                     onChange={handleChange}
                                     placeholder="Enter your email"
+                                />
+                            </FormControl>
+
+                            <FormControl isRequired>
+                                <FormLabel>Phone Number</FormLabel>
+                                <Input
+                                    type="tel"
+                                    name="phone"
+                                    value={form.phone}
+                                    onChange={handleChange}
+                                    placeholder="e.g 999-999-9999"
                                 />
                             </FormControl>
 

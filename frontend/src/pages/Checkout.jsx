@@ -1,16 +1,59 @@
 import React from "react";
 import { useCartStore } from "../store/cart";
+import { useAuthStore } from "../store/useAuthStore";
 import { Box, Button, Text, VStack, HStack, Image } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
     const { cart, totalPrice } = useCartStore();
+    const { user } = useAuthStore(); // get user info
     const navigate = useNavigate();
 
-    const handlePayment = () => {
-        console.log(cart)
-        navigate("/payment"); // Navigate to payment page
-    };
+const handlePayment = async () => {
+    try {
+        console.log(user)
+      if (!user) {
+        alert("Please log in to place an order.");
+        navigate("/login")
+        return;
+      }
+
+      const orderData = {
+        customer: {
+          name: user.name,
+          email: user.email,
+          phone: user.phone,
+        },
+        items: Object.values(cart).map((item) => ({
+          id: item._id,
+          name: item.name,
+          quantity: item.quantity,
+          price: item.price,
+        })),
+        total: totalPrice,
+      };
+
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(orderData),
+      });
+
+      if (!response.ok) throw new Error("Order failed");
+
+      const result = await response.json();
+      console.log("Order placed:", result);
+
+      navigate("/tnx");
+    } catch (error) {
+      console.error("Order error:", error.message);
+      alert("Could not place the order.");
+    }
+  };
+
 
     return (
         <Box p={5} mt={{base:20, md:40}}>
@@ -27,7 +70,7 @@ const Checkout = () => {
                         </HStack>
                     ))}
                     <Text fontWeight="bold" fontSize={{base:"xl", md:"xx-large"}} py={{base:10, md:20}}>Total: ${totalPrice}</Text>
-                    <Button colorScheme="green" size={'lg'} onClick={handlePayment}>Proceed to Payment - ${totalPrice}</Button>
+                    <Button colorScheme="green" size={'lg'} onClick={handlePayment}>Proceed to place Order - ${totalPrice}</Button>
                 </VStack>
             )}
         </Box>

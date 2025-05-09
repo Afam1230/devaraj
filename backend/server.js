@@ -30,13 +30,13 @@ if (process.env.NODE_ENV === "production") {
 
 app.post("/api/book", async (req, res) => {
 	const { name, email, phone, message, dob, timeOfBirth } = req.body;
-  
+
 	// Email Format
 	const mailOptions = {
-	  from: process.env.EMAIL || "afamabuo@gmail.com",
-	  to: process.env.RECIPIENT_EMAIL || "afamjamb@gmail.com",
-	  subject: "🔥 New Booking Request | Devarishi Das Asamoah 🔥",
-	  text: `Hello Devarishi,  
+		from: process.env.EMAIL || "afamabuo@gmail.com",
+		to: process.env.RECIPIENT_EMAIL || "afamjamb@gmail.com",
+		subject: "🔥 New Booking Request | Devarishi Das Asamoah 🔥",
+		text: `Hello Devarishi,  
 	
   You have a new booking request!  
 	
@@ -52,24 +52,78 @@ app.post("/api/book", async (req, res) => {
   🔮 Regards,  
   Booking System`,
 	};
-  
+
 	try {
-	  const transporter = nodemailer.createTransport({
-		service: "gmail",
-		auth: {
-		  user: process.env.EMAIL || "afamabuo@gmail.com",
-		  pass: process.env.EMAIL_PASSWORD || "dris wgng afcv hrmg", // Use App Password
-		},
-	  });
-  
-	  await transporter.sendMail(mailOptions);
-	  res.status(200).json({ message: "Booking request sent!" });
+		const transporter = nodemailer.createTransport({
+			service: "gmail",
+			auth: {
+				user: process.env.EMAIL || "afamabuo@gmail.com",
+				pass: process.env.EMAIL_PASSWORD || "dris wgng afcv hrmg", // Use App Password
+			},
+		});
+
+		await transporter.sendMail(mailOptions);
+		res.status(200).json({ message: "Booking request sent!" });
 	} catch (error) {
-	  console.error("Email sending error:", error);
-	  res.status(500).json({ message: "Failed to send email", error });
+		console.error("Email sending error:", error);
+		res.status(500).json({ message: "Failed to send email", error });
 	}
-  });
-  
+});
+
+
+app.post("/api/orders", async (req, res) => {
+	const { customer, items, total } = req.body;
+
+	if (!customer || !items || !total) {
+		return res.status(400).json({ message: "Missing order information" });
+	}
+
+	const { name, email, phone } = customer;
+
+	const itemList = items.map((item, index) =>
+		`  ${index + 1}. ${item.name} — Qty: ${item.quantity} — $${item.price}`
+	).join("\n");
+
+	const mailOptions = {
+		from: process.env.EMAIL || "afamabuo@gmail.com",
+		to: process.env.RECIPIENT_EMAIL || "afamjamb@gmail.com",
+		subject: "🛒 New Order Received | Devarishi Das Asamoah",
+		text: `Hello Devarishi,
+
+You have received a new order!
+
+👤 Customer Name: ${name}
+📧 Email: ${email}
+📞 Phone: ${phone}
+
+🧾 Order Summary:
+${itemList}
+
+💰 Total Amount: $${total}
+
+Please review and process this order accordingly.
+
+🛍️ Regards,
+Your Order System`,
+	};
+
+	try {
+		const transporter = nodemailer.createTransport({
+			service: "gmail",
+			auth: {
+				user: process.env.EMAIL || "afamabuo@gmail.com",
+				pass: process.env.EMAIL_PASSWORD || "dris wgng afcv hrmg", // Use App Password
+			},
+		});
+
+		await transporter.sendMail(mailOptions);
+		res.status(200).json({ message: "Order email sent!" });
+	} catch (error) {
+		console.error("Order email sending error:", error);
+		res.status(500).json({ message: "Failed to send order email", error });
+	}
+});
+
 
 app.listen(PORT, () => {
 	connectDB();

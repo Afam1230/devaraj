@@ -21,13 +21,14 @@ import Checkout from "./pages/Checkout";
 import Register from "./pages/Register";
 import Index from "./pages/Index";
 import Indexx from "./pages/Indexx";
+import Tnx from "./pages/TNXS";
 
 
 
 function App() {
 	return (
 		<Box minH={"100vh"} bg={'white'} >
-			<Navbar/>
+			<Navbar />
 			<ScrollToTop />
 			<WhatsAppButton />
 			<Routes>
@@ -43,9 +44,10 @@ function App() {
 				<Route path="/shop" element={<ShopPage />} />
 				<Route path="/article/:id" element={<ArticlePage />} />
 				<Route path="/thank-you" element={<ThankYouPage />} />
+				<Route path="/tnx" element={<Tnx />} />
 				<Route path="/contact" element={<ContactPage />} />
 				<Route path="/checkout" element={<Checkout />} />
-                <Route path="/login" element={<Login />} />
+				<Route path="/login" element={<Login />} />
 				<Route path="/register" element={<Register />} />
 
 			</Routes>
