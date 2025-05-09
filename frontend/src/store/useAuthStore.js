@@ -16,6 +16,7 @@ export const useAuthStore = create(
           const res = await axios.post("/api/auth/login", { email, password });
           // ✅ Store token
           localStorage.setItem("token", res.data.token);
+          console.log("email:", email, "password:", password)
       
           // ✅ Store userId
           localStorage.setItem("userId", res.data.user._id);
