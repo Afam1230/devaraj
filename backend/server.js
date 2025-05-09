@@ -34,7 +34,7 @@ app.post("/api/book", async (req, res) => {
 	// Email Format
 	const mailOptions = {
 		from: process.env.EMAIL || "afamabuo@gmail.com",
-		to: process.env.RECIPIENT_EMAIL || "afamjamb@gmail.com",
+		to: process.env.RECIPIENT_EMAIL || "Astrotvgh@gmail.com",
 		subject: "🔥 New Booking Request | Devarishi Das Asamoah 🔥",
 		text: `Hello Devarishi,  
 	
@@ -86,7 +86,7 @@ app.post("/api/orders", async (req, res) => {
 
 	const mailOptions = {
 		from: process.env.EMAIL || "afamabuo@gmail.com",
-		to: process.env.RECIPIENT_EMAIL || "afamjamb@gmail.com",
+		to: process.env.RECIPIENT_EMAIL || "Astrotvgh@gmail.com",
 		subject: "🛒 New Order Received | Devarishi Das Asamoah",
 		text: `Hello Devarishi,
 

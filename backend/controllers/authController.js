@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 import path from "path"
 const __dirname = path.resolve();
 dotenv.config(__dirname)
-dotenv.config({path: '../.env'})
+dotenv.config({ path: '../.env' })
 
 console.log("JWT_SECRT is:", process.env.JWT_SECRET ? "✔️ loaded" : "❌ missing in authController");
 
@@ -52,8 +52,9 @@ export const login = async (req, res) => {
     console.log('userr', user)
 
     if (!user || !(await bcrypt.compare(password, user.password))) {
-      return res.status(401).json({ error: "Invalid credentials" });
       console.log('invalid creds')
+
+      return res.status(401).json({ error: "Invalid credentials" });
     }
 
     if (!process.env.JWT_SECRET) {

@@ -53,7 +53,7 @@ const Checkout = () => {
       const itemsList = orderData.items
         .map(
           (item, idx) =>
-            `${idx + 1}. ${item.name} x${item.quantity} - GHS ${item.price * item.quantity}`
+            `${idx + 1}. ${item.name} x${item.quantity} - $ ${item.price * item.quantity}`
         )
         .join("\n");
 
@@ -66,7 +66,7 @@ const Checkout = () => {
 🧾 Order Details:
 ${itemsList}
 
-💰 Total: GHS ${orderData.total}
+💰 Total: $ ${orderData.total}
 
 Please confirm and follow up.`;
 

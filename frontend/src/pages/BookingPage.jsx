@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { FaYoutube, FaTelegramPlane, FaFacebook, FaWhatsapp, FaEnvelope, FaPhone, FaMapMarkerAlt, FaTwitterSquare } from "react-icons/fa";
-
+import ConsultationSection from "../components3/ConsultationSection"
 
 const BookingPage = () => {
   const [formData, setFormData] = useState({
@@ -101,7 +101,7 @@ const BookingPage = () => {
 
 
   return (
-    <Box maxW="md" mx="auto" mt={{ base: 40, md: 40, lg: 40, xl: 60 }} p={5} boxShadow="lg" borderRadius="lg">
+    <Box maxW="100vw" mx="auto" mt={{ base: 40, md: 40, lg: 40, xl: 60 }} p={5} boxShadow="lg" borderRadius="lg">
       <Heading textAlign="center" fontSize="2xl" color="orange.700">Book a Consultation</Heading>
       <VStack spacing={6} mt={5} as="form" onSubmit={handleSubmit}>
         <FormControl isRequired>
@@ -154,6 +154,8 @@ const BookingPage = () => {
           <Link href="https://wa.me/2348175725656" isExternal><IconButton icon={<FaWhatsapp />} aria-label="WhatsApp" colorScheme="green" /></Link>
         </HStack>
       </VStack>
+            <ConsultationSection/>
+
     </Box>
   );
 };
