@@ -56,9 +56,25 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    const response = await fetch("/api/book", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...formData
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to send booking request");
+    }
+
+    // for data is being passed correctly. just pass it to the backend.
+    console.log(formData)
 
     setTimeout(() => {
       toast({
@@ -82,19 +98,19 @@ const ContactSection = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "contact@astrodevaraj.com",
-      link: "mailto:contact@astrodevaraj.com",
+      value: "Devarishidas@gmail.com",
+      link: "mailto:Devarishidas@gmail.com",
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+1 (555) 123-4567",
-      link: "tel:+15551234567",
+      value: "+(233) 54 194-0276",
+      link: "tel:+233541940276",
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "New York, NY, USA",
+      value: "ACCRA, GHANA",
       link: "#",
     },
   ];

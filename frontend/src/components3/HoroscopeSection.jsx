@@ -15,6 +15,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
+import { useNavigate } from 'react-router-dom';
 
 const zodiacSigns = [
   { name: 'Aries', dates: 'Mar 21 - Apr 19' },
@@ -37,6 +38,7 @@ const HoroscopeSection = () => {
   const [selectedSign, setSelectedSign] = useState('Aries');
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('orange.200', 'orange.700');
+  const navigate = useNavigate()
 
   return (
     <Box as="section" id="horoscope" py={24} bg={bgColor} position="relative">
@@ -166,7 +168,7 @@ const HoroscopeSection = () => {
                         </Grid>
 
                         <Button colorScheme="orange" onClick={()=>{navigate("/book")}} w="full">
-                          Get Full {type} Reading
+                          Get Full Reading
                         </Button>
                       </Box>
                     </TabPanel>

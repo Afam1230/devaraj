@@ -40,24 +40,15 @@ const AboutSection = () => {
       {/* Decorative Blurs */}
       <Box
         position="absolute"
-        top="5rem"
-        left="2.5rem"
+        top={{ md: "5rem" }}
+        left={{ md: "2.5rem", }}
         w="12rem"
         h="12rem"
         bg="astral.goldAlpha.100"
         filter="blur(60px)"
         borderRadius="full"
       />
-      <Box
-        position="absolute"
-        bottom="2.5rem"
-        right="2.5rem"
-        w="16rem"
-        h="16rem"
-        bg="astral.orangeAlpha.800"
-        filter="blur(60px)"
-        borderRadius="full"
-      />
+
 
       <Container maxW="7xl" px="4">
         <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={12} alignItems="center">
@@ -128,27 +119,49 @@ const AboutSection = () => {
                   overflow="hidden"
                   bgGradient="linear(to-br, astral.peach, astral.orange)"
                   aspectRatio={4 / 5}
-                  backgroundImage={hero}
+                  backgroundImage={"https://scontent.flos1-1.fna.fbcdn.net/v/t39.30808-6/495300313_1084213220392942_2842729744296527586_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=P_65xJ65kWUQ7kNvwHK0M-o&_nc_oc=Adk4q-qeJfzf30TXDsrcTQBcKUtNyuMWJ2glgGuQ6upffqoekh8cGhRr6MkHao5l6cc&_nc_zt=23&_nc_ht=scontent.flos1-1.fna&_nc_gid=e4EQf3-YmoEIQ2xyQEAAeA&oh=00_AfKOEs3OMcE-M2ddld_o67oAQ-gV5Z3rHpE3ZQFAsbEjVA&oe=6823249F"}
                   backgroundSize="cover"
                   backgroundPosition="center"
                   w="full"
                   h="full"
-                />
+                  zIndex={1}
+                >
+                  {/* Decorative blur inside image container */}
+                  <Box
+                    position="absolute"
+                    bottom="1rem"
+                    right="1rem"
+                    w="10rem"
+                    h="10rem"
+                    bg="astral.orangeAlpha.800"
+                    filter="blur(60px)"
+                    borderRadius="full"
+                    zIndex={-11}
+                  />
+                  <Box
+                    position="absolute"
+                    bottom="1rem"
+                    right="1rem"
+                    w="10rem"
+                    h="10rem"
+                    bg="astral.orangeAlpha.800"
+                    filter="blur(60px)"
+                    borderRadius="full"
+                    zIndex={-11}
+                  />
+                  <Box
+                    position="absolute"
+                    bottom="1rem"
+                    right="1rem"
+                    w="10rem"
+                    h="10rem"
+                    bg="astral.orangeAlpha.800"
+                    filter="blur(60px)"
+                    borderRadius="full"
+                    zIndex={-11}
+                  />
+                </Box>
               </Box>
-
-              {/* Gold border behind image */}
-              <Box
-                position="absolute"
-                top="2.5rem"
-                left="-1.5rem"
-                w="full"
-                h="full"
-                border="2px solid"
-                borderColor="astral.gold"
-                borderRadius="lg"
-                transform="rotate(-6deg)"
-                zIndex={-1}
-              />
 
               {/* Badge */}
               <Flex
@@ -170,7 +183,7 @@ const AboutSection = () => {
               >
                 <Box>
                   <Text fontWeight="bold" fontSize="xl" color="astral.orange">
-                    20+
+                    10+
                   </Text>
                   <Text fontSize="10px" textTransform="uppercase" letterSpacing="wider">
                     Years Exp

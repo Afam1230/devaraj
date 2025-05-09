@@ -14,36 +14,9 @@ import {
   Icon,
 } from "@chakra-ui/react";
 import { Calendar } from "lucide-react";
+import articles from "../store/articles";
+import { useNavigate } from "react-router-dom";
 
-const blogPosts = [
-  {
-    title: "Understanding Planetary Retrogrades",
-    excerpt:
-      "Discover how retrograde planets influence your life and how to navigate these cosmic shifts effectively.",
-    date: "May 15, 2025",
-    category: "Astrological Events",
-    imageUrl:
-      "https://images.unsplash.com/photo-1618005198919-d3d4b5a23cca?fit=crop&w=600&h=400",
-  },
-  {
-    title: "The North Node: Finding Your Soul's Purpose",
-    excerpt:
-      "Learn how the position of the North Node in your birth chart reveals your soul's mission in this lifetime.",
-    date: "May 3, 2025",
-    category: "Vedic Astrology",
-    imageUrl:
-      "https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?fit=crop&w=600&h=400",
-  },
-  {
-    title: "Full Moon Rituals for Manifestation",
-    excerpt:
-      "Harness the powerful energy of the full moon with these ancient rituals to manifest your deepest desires.",
-    date: "April 28, 2025",
-    category: "Lunar Magic",
-    imageUrl:
-      "https://images.unsplash.com/photo-1532013925094-19697e29cf05?fit=crop&w=600&h=400",
-  },
-];
 
 const BlogSection = () => {
   useEffect(() => {
@@ -65,9 +38,10 @@ const BlogSection = () => {
       elements.forEach((el) => observer.unobserve(el));
     };
   }, []);
+  const navigate = useNavigate()
 
   return (
-    <Box as="section" id="blog" py="24" bg="astral.cream">
+    <Box as="section" id="blog" py="24" bg="white">
       <Container maxW="7xl" px={4}>
         {/* Header */}
         <Box textAlign="center" maxW="3xl" mx="auto" mb={16} className="section-fade-in">
@@ -82,7 +56,7 @@ const BlogSection = () => {
 
         {/* Blog Grid */}
         <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={8}>
-          {blogPosts.map((post, index) => (
+          {articles.map((article, index) => (
             <Box
               key={index}
               className="section-fade-in"
@@ -100,8 +74,8 @@ const BlogSection = () => {
               {/* Image */}
               <Box position="relative">
                 <Image
-                  src={post.imageUrl}
-                  alt={post.title}
+                  src={article.image}
+                  alt={article.title}
                   objectFit="cover"
                   w="100%"
                   h="12rem"
@@ -117,7 +91,7 @@ const BlogSection = () => {
                   px="2"
                   borderRadius="md"
                 >
-                  {post.category}
+                  {article.category}
                 </Tag>
               </Box>
 
@@ -125,13 +99,13 @@ const BlogSection = () => {
               <Stack p={6} flexGrow={1}>
                 <Flex align="center" fontSize="sm" color="gray.500" mb={2}>
                   <Icon as={Calendar} h={4} w={4} mr={1} />
-                  {post.date}
+                  {article.date}
                 </Flex>
                 <Heading fontSize="xl" fontFamily="serif" fontWeight="semibold" mb={2}>
-                  {post.title}
+                  {article.title}
                 </Heading>
                 <Text color="gray.600" noOfLines={3}>
-                  {post.excerpt}
+                  {article.content}
                 </Text>
               </Stack>
 
@@ -144,6 +118,7 @@ const BlogSection = () => {
                   color="astral.gold"
                   _hover={{ bg: "astral.goldAlpha.50" }}
                   rounded="full"
+                  onClick={()=>navigate(`/article/${article.id}`)}
                 >
                   Read Article
                 </Button>

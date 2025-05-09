@@ -59,14 +59,14 @@ const ShopPage = () => {
                 {Array.isArray(products) ? (
                     products.map((product) => (
                         <Box key={product._id} borderWidth="1px" borderRadius="lg" overflow="hidden" p={4}>
-                            <Link to={`/product/${product._id}`}>
+                            {/* <Link to={`/product/${product._id}`}> */}
                                 <Image src={product.image} alt={product.name} h="200px" w="full" objectFit="cover" />
                                 <VStack align="start" spacing={2} mt={3}>
                                     <Heading size="md">{product.name}</Heading>
                                     <Text fontSize="sm">{product.description}...</Text>
                                     <Text align={'center'} fontWeight="bold">${product.price}</Text>
                                 </VStack>
-                            </Link>
+                            {/* </Link> */}
 
                             <Box mt={4} textAlign="center">
                                 {/* If product is NOT in cart, show "Add to Cart" button */}

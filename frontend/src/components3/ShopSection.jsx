@@ -149,6 +149,8 @@ const ShopSection = () => {
                       backgroundColor: "#FF9A8B",
                       color: "white",
                     }}
+                  onClick={()=>{navigate("/shop")}}
+
                   >
                     Add to Cart
                   </Button>

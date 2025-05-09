@@ -29,19 +29,17 @@ const AboutPage = () => {
         animate={{ opacity: 1, x: 0 }} 
         transition={{ duration: 0.8 }}>
         <Heading fontFamily="DM Serif Text" fontSize="3xl" color="brown.700">The Journey</Heading>
-        <Text fontSize="xl" mt={3} color="gray.800">
+        <Text fontSize="xl" color="gray.800" padding={10}>
           From an early age, I was drawn to the celestial mysteries of the universe. My deep studies in 
           <b> Jyotish Shastra (Vedic Astrology) </b> and <b> Vedic scriptures </b> led me to understand the 
           profound connection between planetary influences and human destiny. Over the years, I have 
           guided individuals through astrological readings, sacred rituals, and spiritual coaching to help 
           them navigate life’s challenges.
         </Text>
-      </MotionBox>
+      
 
       {/* Expertise Section */}
-      <MotionBox  mt={10} p={5} bg="white" boxShadow="md" borderRadius="lg"          initial={{ opacity: 0, y: 80 }} 
-        animate={{ opacity: 1, y: 0 }} 
-        transition={{ duration: 2 }}>
+      <MotionBox  mt={10} p={5} bg="white" boxShadow="md" borderRadius="lg" initial={{ opacity: 0, y: 80 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 2 }}>
         <Heading fontFamily="DM Serif Text" fontSize="3xl" color="brown.700" textAlign="center">My Expertise</Heading>
         <VStack align="start" spacing={4} mt={5}>
           <Text fontSize="xl" color="gray.700">🔹 <b>Vedic Astrology & Birth Chart Readings</b> – Decode your cosmic blueprint.</Text>
@@ -49,6 +47,7 @@ const AboutPage = () => {
           <Text fontSize="xl" color="gray.700">🔹 <b>Vedic Rituals & Remedies</b> – Harmonize your energies through sacred pujas and mantra sadhana.</Text>
           <Text fontSize="xl" color="gray.700">🔹 <b>Relationship & Career Guidance</b> – Personalized astrological insights for love, career, and finances.</Text>
         </VStack>
+      </MotionBox>
       </MotionBox>
 
       {/* Contact Section */}

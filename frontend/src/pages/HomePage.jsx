@@ -40,6 +40,7 @@ import HoroscopeSection from "../components3/HoroscopeSection";
 import ConsultationSection from "../components3/ConsultationSection"
 import ContactSection from "../components3/ContactSection"
 import NewsletterSection from "../components3/NewsletterSection"
+import BlogSection from "../components3/BlogSection"
 import logo1 from "../images/logo1.png"
 
 const MotionBox = motion(Box);
@@ -51,46 +52,6 @@ const HomePage = () => {
   useEffect(() => {
     fetchProducts(); // Fetch products when the page loads
   }, []);
-
-  const InfoCard = [
-    {
-      title: "Personal compatibility reading",
-      info: "Gain deep insights into your relationships with a personalized compatibility reading, revealing strengths, challenges, and cosmic alignment.",
-      image: "https://astromary.com/assets/medias/pictures/reading-card-1.jpg",
-    },
-    {
-      title: "Personal 2025 reading",
-      info: "Discover what 2025 holds for you with a personalized reading, covering key opportunities, challenges, and cosmic influences.",
-      image: "https://astromary.com/assets/medias/pictures/reading-card-2.jpg",
-    },
-    {
-      title: "Your character reading",
-      info: "Uncover your true nature, strengths, and hidden traits with a personalized character reading.",
-      image: "https://astromary.com/assets/medias/pictures/reading-card-3.jpg",
-    },
-    {
-      title: "Past life reading",
-      info: "Explore your past lives to uncover karmic patterns, lessons, and their influence on your present journey.",
-      image: "https://astromary.com/assets/medias/pictures/reading-card-4.jpg",
-    },
-    {
-      title: "Personal chinese reading",
-      info: "Unlock insights from your Chinese astrology chart, revealing personality traits, life path, and future opportunities.",
-      image: "https://astromary.com/assets/medias/pictures/reading-card-5.jpg",
-    },
-    {
-      title: "3 Months Forecst",
-      info: "Get a detailed three-month forecast revealing upcoming opportunities, challenges, and key cosmic influences.",
-      image: "https://astromary.com/assets/medias/pictures/reading-card-6.jpg",
-    },
-    {
-      title: "Puja and Homa",
-      info: "Experience divine blessings through sacred Puja and Homa rituals, designed to attract positive energy and remove obstacles.",
-      image: "https://www.tirthpurohit.org/wp-content/uploads/2017/11/img3.jpg",
-    },
-
-  ];
-
 
 
   return (
@@ -166,14 +127,15 @@ const HomePage = () => {
                   h="full"
                   aspectRatio={1}
                   objectPosition={'100% 0vh'}
+                  zIndex={1}
                 />
               </Box>
             </MotionBox>
           </Stack>
         </Box>
-        <ServicesSection/>
+        <ServicesSection />
 
-        <HoroscopeSection/>
+        <HoroscopeSection />
         {/* Daily Planetary Influences */}
         <Container maxW="100%" py={{ base: '10', md: '20' }} textAlign="center">
           <Heading fontSize="3xl" fontFamily="'Georgia', serif">Daily Planetary Influences</Heading>
@@ -186,7 +148,7 @@ const HomePage = () => {
               { icon: FaMercury, title: "Mercury", desc: "Direct in Gemini, favoring communication" },
               { icon: FaVenus, title: "Venus", desc: "In Libra, harmonizing relationships" }
             ].map(({ icon: Icon, title, desc }) => (
-              <Flex key={title} p={{ base: '5', md: '50px' }}  borderColor={'yellow.400'} shadow={"lg"} borderRadius="md" borderWidth={3} align="center" w={{ base: "90%", md: "48%", lg: "40%", xl: '20%' }}>
+              <Flex key={title} p={{ base: '5', md: '50px' }} borderColor={'yellow.400'} shadow={"lg"} borderRadius="md" borderWidth={3} align="center" w={{ base: "90%", md: "48%", lg: "40%", xl: '20%' }}>
                 <Icon size={40} color="orange" />
                 <MotionBox ml={{ xl: 3, base: '20%' }} initial={{ opacity: 0, x: -80 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} >
                   <Text align={'center'} fontSize={{ base: 15, md: 25 }} fontWeight="bold" fontFamily="'Georgia', serif">{title}</Text>
@@ -226,7 +188,7 @@ const HomePage = () => {
           </Container>
         </Box>
 
-        <ConsultationSection/>
+        <ConsultationSection />
 
 
         {/* Services Section */}
@@ -239,8 +201,8 @@ const HomePage = () => {
             Sacred Services
           </Text>
           <Box w={40} h={1} bg="orange.400" mx="auto" mt={2} borderRadius="full" />
-        {/* Services Grid */}
-        {/* <Box
+          {/* Services Grid */}
+          {/* <Box
           display="flex"
           justifyContent="center"
           alignItems="center"
@@ -282,8 +244,9 @@ const HomePage = () => {
 
         {/* Articles Section */}
         <Container maxW="100%" py={12} bg="white" borderRadius={20} shadow="lg">
+          <BlogSection/>
           {/* Section Heading */}
-          <Heading
+          {/* <Heading
             fontWeight={600}
             fontFamily="Playfair Display"
             size={{ base: "xl", md: "2xl", lg: "3xl" }}
@@ -292,10 +255,9 @@ const HomePage = () => {
             color="#2C3E50"
           >
             Wisdom Insights
-          </Heading>
-
+          </Heading> */}
           {/* Articles Grid */}
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10} px={2} justifyItems="center">
+          {/* <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10} px={2} justifyItems="center">
             {articles.map((articles, index) => (
               <Link to={`/article/${articles.id}`} key={articles.id} style={{ width: "100%" }}>
                 <VStack
@@ -307,30 +269,30 @@ const HomePage = () => {
                   cursor="pointer"
                   _hover={{ transform: "scale(1.05)", transition: "0.3s ease-in-out", shadow: "xl" }}
                 >
-                  <Image src={articles.image} alt={articles.title}  w={{ base: "full", xl: 300 }} maxH="250px" objectFit="cover" />
+                  <Image src={articles.image} alt={articles.title} w={{ base: "full", xl: 300 }} maxH="250px" objectFit="cover" />
                   <Box>
                     <VStack>
-                    <Text fontSize={{ base: "xl", md: "2xl" }}  fontFamily="Playfair Display" px={5} textColor="orange.700" mt={3}>
-                    {articles.title}
-                  </Text>
+                      <Text fontSize={{ base: "xl", md: "2xl" }} fontFamily="Playfair Display" px={5} textColor="orange.700" mt={3}>
+                        {articles.title}
+                      </Text>
 
-                  <Text fontSize={{ base: "sm", md: "md", lg: "lg" }}  px={3} noOfLines={3}>
-                    {articles.info}
-                  </Text>
+                      <Text fontSize={{ base: "sm", md: "md", lg: "lg" }} px={3} noOfLines={3}>
+                        {articles.info}
+                      </Text>
 
-                  <Text fontWeight="bold" color="orange.700" mt={2} _hover={{ textDecoration: "underline" }}>
-                    Read more <ArrowForwardIcon />
-                  </Text>
+                      <Text fontWeight="bold" color="orange.700" mt={2} _hover={{ textDecoration: "underline" }}>
+                        Read more <ArrowForwardIcon />
+                      </Text>
                     </VStack>
                   </Box>
                 </VStack>
               </Link>
             ))}
-          </SimpleGrid>
+          </SimpleGrid> */}
         </Container>
 
         {/* Shop Section */}
-        <ShopSection/>
+        <ShopSection />
         {/* Product Grid */}
         {/* <SimpleGrid columns={{ base: 2, md: 3, lg: 4 }} spacing={6}>
           {Array.isArray(products) ? (
@@ -364,8 +326,8 @@ const HomePage = () => {
             <Text>Loading products...</Text>
           )}
         </SimpleGrid> */}
-        <ContactSection/>
-        <NewsletterSection/>
+        <ContactSection />
+        <NewsletterSection />
       </Box>
     </Box>
 

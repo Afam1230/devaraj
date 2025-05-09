@@ -14,6 +14,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { Clock, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const consultations = [
   {
@@ -82,6 +83,8 @@ const ConsultationSection = () => {
       elements.forEach((el) => observer.unobserve(el));
     };
   }, []);
+
+  const navigate = useNavigate()
 
   return (
     <Box as="section" id="consultations" py={24} bg="astral.cream" position="relative" overflow="hidden">
@@ -203,6 +206,7 @@ const ConsultationSection = () => {
                   }}
                   rounded="full"
                   fontSize={{xl:20, base:10}}
+                  onClick={()=>{navigate('/book')}}
                 >
                   Book Now
                 </Button>
@@ -236,8 +240,10 @@ const ConsultationSection = () => {
             color="astral.gold"
             _hover={{ bg: "astral.goldAlpha.50" }}
             rounded="full"
+            onClick={()=>{navigate("/contact")}}
+
           >
-            Schedule a Free 15-Minute Consultation
+            Contact Us for free 15-mins Consultation
           </Button>
         </Box>
       </Container>

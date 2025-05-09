@@ -2,6 +2,7 @@ import { useState } from "react";
 import { VStack, HStack, Heading, Text, Input, Textarea, Button, IconButton, Link, useToast } from "@chakra-ui/react";
 import { FaYoutube, FaTelegramPlane, FaFacebook, FaWhatsapp, FaEnvelope, FaPhone, FaMapMarkerAlt, FaTwitterSquare } from "react-icons/fa";
 import { motion } from "framer-motion";
+import ContactSection from "../components3/ContactSection"
 
 const MotionVStack = motion(VStack);
 
@@ -43,16 +44,11 @@ const ContactPage = () => {
 
   return (
     <MotionVStack p={5} spacing={6} align="center" maxW="600px" mx="auto" initial={{ opacity: 0 }} animate={{ opacity: 1 }} mt={{base:20, md:40, lg:40, xl:40}}>
+          <ContactSection/>
       <Heading color="orange.700">Contact Us</Heading>
       <Text textAlign="center" color="gray.600">Feel free to reach out with any questions or inquiries.</Text>
 
-      {/* Contact Form */}
-      <VStack as="form" onSubmit={handleSubmit} spacing={4} w="full">
-        <Input name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
-        <Input name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required type="email" />
-        <Textarea name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} required />
-        <Button type="submit" colorScheme="orange" w="full">Send Message</Button>
-      </VStack>
+
 
       {/* Contact Details */}
       <VStack color="gray.700" spacing={2}>
