@@ -57,27 +57,43 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const response = await fetch("/api/book", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...formData
-      }),
-    });
 
-    if (!response.ok) {
-      throw new Error("Failed to send booking request");
-    }
+    try {
+      const response = await fetch("/api/book", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // for data is being passed correctly. just pass it to the backend.
-    console.log(formData)
+      if (!response.ok) {
+        throw new Error("Failed to send booking request");
+      }
 
-    setTimeout(() => {
+      // WhatsApp redirection
+      const { name, email, subject, message } = formData;
+      const adminPhone = "233556960714"; // Replace with the admin's WhatsApp number (no `+`, no spaces)
+
+      const whatsappMessage = `📬 New Contact Message
+
+👤 Name: ${name}
+📧 Email: ${email}
+📌 Subject: ${subject}
+📝 Message: ${message}
+
+Please respond to this inquiry.`;
+
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      const whatsappURL = `https://wa.me/${adminPhone}?text=${encodedMessage}`;
+
+      // Redirect user to WhatsApp
+      window.location.href = whatsappURL;
+
+      // Reset form and show success toast
       toast({
         title: "Message Sent!",
         description: "Thank you for reaching out. We'll respond to your inquiry soon.",
@@ -85,33 +101,43 @@ const ContactSection = () => {
         duration: 5000,
         isClosable: true,
       });
+
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
       });
+    } catch (error) {
+      toast({
+        title: "Error sending request",
+        description: "Something went wrong. Please try again later.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   const contactInfo = [
     {
       icon: Mail,
       title: "Email",
-      value: "Devarishidas@gmail.com",
-      link: "mailto:Devarishidas@gmail.com",
+      value: ["Astrotvgh@gmail.com", "Devarishidas@gmail.com"],
+      link: ["mailto:Astrotvgh@gmail.com", "mailto:Devarishidas@gmail.com"],
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+(233) 54 194-0276",
-      link: "tel:+233541940276",
+      value: ["+(233) 54 194-0276", "+(233) 55 696-0714"],
+      link: ["tel:+233541940276", "tel:+233556960714"]
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "ACCRA, GHANA",
+      value: ["ACCRA, GHANA", "Kaduna, Nigeria"],
       link: "#",
     },
   ];
@@ -203,9 +229,19 @@ const ContactSection = () => {
                       <Text fontWeight="medium" mb={1}>
                         {item.title}
                       </Text>
-                      <Link href={item.link} color="gray.600" fontSize="sm" _hover={{ color: "orange.400" }}>
-                        {item.value}
-                      </Link>
+                      {item.value.map((val, i) => (
+                        <Link
+                          key={i}
+                          href={item.link[i]}
+                          color="gray.600"
+                          fontSize="sm"
+                          _hover={{ color: "orange.400" }}
+                          display="block"
+                          mb={i < item.value.length - 1 ? 1 : 0}
+                        >
+                          {val}
+                        </Link>
+                      ))}
                     </Box>
                   </Box>
                 </GridItem>

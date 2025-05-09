@@ -39,17 +39,19 @@ const BookingPage = () => {
     e.preventDefault();
     setLoading(true);
 
+    const formattedFormData = {
+      ...formData,
+      dob: formData.dob ? moment(formData.dob).format("YYYY-MM-DD") : "",
+      timeOfBirth: formData.timeOfBirth ? moment(formData.timeOfBirth).format("HH:mm") : "",
+    };
+
     try {
       const response = await fetch("/api/book", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          ...formData,
-          dob: formData.dob ? moment(formData.dob).format("YYYY-MM-DD") : "",
-          timeOfBirth: formData.timeOfBirth ? moment(formData.timeOfBirth).format("HH:mm") : "",
-        }),
+        body: JSON.stringify(formattedFormData),
       });
 
       if (!response.ok) {
@@ -63,7 +65,28 @@ const BookingPage = () => {
         isClosable: true,
       });
 
-      navigate("/thank-you"); // Redirect to Thank-You page
+      // Redirect user to WhatsApp with pre-filled message
+      const { name, email, phone, message, dob, timeOfBirth } = formattedFormData;
+      const adminPhone = "233556960714"; // Replace with actual admin number
+
+      const whatsappMessage = `🔥 New Booking Request 🔥
+
+👤 Name: ${name}
+📧 Email: ${email}
+📞 Phone: ${phone}
+📅 Date of Birth: ${dob || "Not provided"}
+⏰ Time of Birth: ${timeOfBirth || "Not provided"}
+📝 Message: ${message}`;
+
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      const whatsappURL = `https://wa.me/${adminPhone}?text=${encodedMessage}`;
+
+      // Option 1: Redirect to WhatsApp immediately
+      window.location.href = whatsappURL;
+
+      // Option 2 (optional): Delay before redirecting or show thank-you page first
+      // navigate("/thank-you");
+
     } catch (error) {
       toast({
         title: "Error sending request",
@@ -75,6 +98,7 @@ const BookingPage = () => {
       setLoading(false);
     }
   };
+
 
   return (
     <Box maxW="md" mx="auto" mt={{ base: 40, md: 40, lg: 40, xl: 60 }} p={5} boxShadow="lg" borderRadius="lg">
